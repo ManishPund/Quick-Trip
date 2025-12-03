@@ -18,7 +18,7 @@ body {
   font-weight: 400;
 }
 
-/* Footer */ 
+/* Footer */
 
 .f-info {
   text-align: center;
@@ -68,7 +68,7 @@ body {
   color: inherit;
 }
 
-.card {
+.listing-card {
   border: none;
   border-radius: 1rem;
   overflow: hidden;
