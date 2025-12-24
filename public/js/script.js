@@ -20,3 +20,22 @@
     );
   });
 })();
+
+const filters = document.querySelectorAll(".filter");
+
+filters.forEach((filter) => {
+  filter.addEventListener("click", () => {
+    filters.forEach((f) => f.classList.remove("active"));
+    filter.classList.add("active");
+  });
+});
+
+const taxSwitch = document.querySelector("#switchCheckReverse");
+const taxInfo = document.querySelectorAll(".tax-info");
+if (taxSwitch) {
+  taxSwitch.addEventListener("change", () => {
+    taxInfo.forEach((info) => {
+      info.style.display = taxSwitch.checked ? "inline" : "none";
+    });
+  });
+}

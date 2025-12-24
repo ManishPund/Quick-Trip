@@ -1,33 +1,273 @@
+/* =====================
+   Base Layout
+===================== */
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  color: #222;
 }
 
 .container {
   flex: 1;
 }
 
+/* =====================
+   Navbar
+===================== */
 .navbar {
-  background-color: white;
+  background-color: #fff;
+  border-bottom: 1px solid #e6e6e6;
+  font-size: 0.9rem;
 }
 
-.nav-link {
-  color: #222222;
-  font-weight: 400;
+.navbar-brand img {
+  object-fit: contain;
+  transition: transform 0.25s ease;
 }
 
-/* Footer */
+.navbar-brand:hover img {
+  transform: scale(1.05);
+}
 
-.f-info {
+.navbar .nav-link {
+  color: #333;
+  font-weight: 500;
+  margin: 0 0.35rem;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: #333;
+  transition: width 0.25s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #000;
+}
+
+.navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+.navbar .nav-link.fw-bold {
+  color: #111;
+}
+
+/* CTA */
+.navbar a[href="/listings/new"] {
+  background-color: transparent;
+  color: #333 !important;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.navbar a[href="/listings/new"]:hover {
+  background-color: #f0f0f0;
+  color: #000 !important;
+}
+
+/* Toggler */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  filter: grayscale(1) brightness(0.2);
+}
+
+/* =====================
+   Search Bar
+===================== */
+.navbar form.d-flex {
+  background-color: #f7f7f7;
+  padding: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid #e2e2e2;
+  transition: background-color 0.25s ease;
+}
+
+.navbar form.d-flex:hover {
+  background-color: #f0f0f0;
+}
+
+.navbar .form-control {
+  border: none;
+  background: transparent;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  color: #333;
+  box-shadow: none;
+  width: 25vw;
+}
+
+.navbar .form-control::placeholder {
+  color: #999;
+}
+
+.navbar .btn-outline-dark {
+  border: none;
+  border-radius: 50%;
+  background-color: #333;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  transition: background-color 0.25s ease;
+}
+
+.navbar .btn-outline-dark:hover {
+  background-color: #000;
+}
+
+/* =====================
+   Filters
+===================== */
+#filters {
+  gap: 1.2rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #e5e5e5;
+  align-items: center;
+}
+
+.filter {
+  min-width: 90px;
+  padding: 0.8rem 0.6rem;
   text-align: center;
+  border-radius: 14px;
+  background-color: #fff;
+  color: #555;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.filter i {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+  color: #555;
+  opacity: 0.7;
+}
+
+.filter p {
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.filter:hover {
+  cursor: pointer;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.filter.active i {
+  color: #000;
+  opacity: 1;
+}
+
+/* =====================
+   Tax Toggle
+===================== */
+.tax-toggle {
+  margin-left: auto;
+  padding: 0.6rem 1rem;
+  border-radius: 14px;
+  background-color: #f7f7f7;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.tax-toggle:hover {
+  background-color: #f0f0f0;
+}
+
+.form-check-label {
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 0.6rem;
+}
+
+.form-switch .form-check-input {
+  width: 2.4rem;
+  height: 1.2rem;
+  background-color: #d6d6d6;
+  border: none;
+  cursor: pointer;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #333;
+}
+
+.tax-info {
+  display: none;
+  font-size: 0.75rem;
+  color: #777;
+  font-style: italic;
+}
+
+/* =====================
+   Cards
+===================== */
+.listing-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.listing-link:hover {
+  transform: translateY(-5px);
+}
+
+.listing-card {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.card-img-top {
+  height: 20rem;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #333;
+}
+
+.card-text {
+  color: #555;
+}
+
+/* =====================
+   Footer
+===================== */
+.f-info {
   height: 8rem;
   background-color: #ebebeb;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: space-evenly;
+  text-align: center;
 }
 
 .f-info-links,
@@ -46,60 +286,42 @@ body {
 
 .f-info-links a {
   text-decoration: none;
-  color: #222222;
+  color: #222;
 }
 
 .f-info-links a:hover {
   text-decoration: underline;
 }
 
-/* Cards */
-
-.listing-link {
-  text-decoration: none !important;
-  color: inherit !important;
-  display: block;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.listing-link:hover {
-  transform: translateY(-5px);
-  text-decoration: none;
-  color: inherit;
-}
-
-.listing-card {
-  border: none;
+/* =====================
+   Map
+===================== */
+#map {
+  height: 60vh;
+  width: 100%;
   border-radius: 1rem;
+  margin: 2rem 0;
   overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
-.card-img-top {
-  border-radius: 1rem 1rem 0 0;
-  height: 20rem;
-  object-fit: cover;
-}
+/* =====================
+   Responsive
+===================== */
+@media (max-width: 768px) {
+  .navbar-collapse {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 16px;
+    margin-top: 0.8rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
 
-.card-body {
-  padding: 1rem;
-}
+  .navbar .nav-link::after {
+    display: none;
+  }
 
-.card-title {
-  font-weight: 600;
-  color: #333;
-}
-
-.card-text {
-  color: #555;
-}
-
-/* Card Effect */
-
-.card-img-overlay {
-  opacity: 0;
-}
-
-.card-img-overlay:hover {
-  opacity: 0.2;
-  background-color: white;
+  .navbar a[href="/listings/new"] {
+    margin-top: 0.6rem;
+  }
 }
