@@ -39,3 +39,15 @@ if (taxSwitch) {
     });
   });
 }
+
+const filtersScroll = document.querySelector(".filters-scroll");
+const leftBtn = document.getElementById("scrollLeft");
+const rightBtn = document.getElementById("scrollRight");
+
+leftBtn?.addEventListener("click", () => {
+  filtersScroll.scrollBy({ left: -200, behavior: "smooth" });
+});
+
+rightBtn?.addEventListener("click", () => {
+  filtersScroll.scrollBy({ left: 200, behavior: "smooth" });
+});

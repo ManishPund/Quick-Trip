@@ -94,10 +94,20 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something went wrong!" } = err;
-  console.log(err);
-  // res.status(statusCode).send(message);
-  res.status(statusCode).render("error.ejs", { message });
+  if (req.originalUrl.startsWith("/.well-known")) {
+    return res.status(404).end();
+  }
+
+  console.error("===== ERROR OCCURRED =====");
+  console.error("Status Code:", err.statusCode || 500);
+  console.error("Message:", err.message);
+  console.error("URL:", req.originalUrl);
+  console.error("Method:", req.method);
+  console.error("==========================");
+
+  res.status(err.statusCode || 500).render("error.ejs", {
+    message: err.message,
+  });
 });
 
 app.listen(PORT, () => {

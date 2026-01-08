@@ -35,6 +35,7 @@ body {
   color: #333;
   font-weight: 500;
   margin: 0 0.35rem;
+  padding: 0.45rem 0.9rem;
   position: relative;
   transition: color 0.25s ease;
 }
@@ -93,26 +94,26 @@ body {
 /* =====================
    Search Bar
 ===================== */
-.navbar form.d-flex {
+.navbar .search {
   background-color: #f7f7f7;
   padding: 0.35rem;
   border-radius: 999px;
   border: 1px solid #e2e2e2;
   transition: background-color 0.25s ease;
+  min-width: 25vw;
 }
 
 .navbar form.d-flex:hover {
   background-color: #f0f0f0;
 }
 
-.navbar .form-control {
+.navbar .search-input {
   border: none;
   background: transparent;
   font-size: 0.85rem;
   padding: 0.4rem 0.8rem;
   color: #333;
   box-shadow: none;
-  width: 25vw;
 }
 
 .navbar .form-control::placeholder {
@@ -137,6 +138,57 @@ body {
 /* =====================
    Filters
 ===================== */
+/* Wrapper */
+.filters-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1;
+  overflow: hidden;
+}
+
+.filters-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Horizontal scroll container */
+.filters-scroll {
+  display: flex; /* ✅ ADD THIS */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  flex-wrap: nowrap;
+}
+
+/* Hide scrollbar */
+.filters-scroll::-webkit-scrollbar {
+  display: none;
+}
+.filters-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Arrow buttons */
+.filter-arrow {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex; /* ✅ ALWAYS VISIBLE */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
 #filters {
   gap: 1.2rem;
   padding: 0.8rem 0;
@@ -182,46 +234,55 @@ body {
 /* =====================
    Tax Toggle
 ===================== */
+/* =====================
+   Tax Toggle (Enhanced)
+===================== */
 .tax-toggle {
-  margin-left: auto;
   padding: 0.6rem 1rem;
-  border-radius: 14px;
+  border-radius: 999px;
   background-color: #f7f7f7;
   border: 1px solid #e0e0e0;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s ease;
+  gap: 0.6rem;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.2s ease;
 }
 
+/* Hover lift */
 .tax-toggle:hover {
   background-color: #f0f0f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
-.form-check-label {
+/* Label */
+.tax-toggle .form-check-label {
   font-size: 0.85rem;
   color: #333;
   font-weight: 500;
   cursor: pointer;
-  margin-right: 0.6rem;
+  white-space: nowrap;
 }
 
-.form-switch .form-check-input {
-  width: 2.4rem;
-  height: 1.2rem;
+/* Switch base */
+.tax-toggle .form-switch .form-check-input {
+  width: 2.6rem;
+  height: 1.3rem;
   background-color: #d6d6d6;
   border: none;
   cursor: pointer;
+  transition: background-color 0.25s ease;
 }
 
-.form-switch .form-check-input:checked {
-  background-color: #333;
+/* Switch checked */
+.tax-toggle .form-switch .form-check-input:checked {
+  background-color: #111;
 }
 
-.tax-info {
-  display: none;
-  font-size: 0.75rem;
-  color: #777;
-  font-style: italic;
+/* Remove focus ring */
+.tax-toggle .form-switch .form-check-input:focus {
+  box-shadow: none;
 }
 
 /* =====================
@@ -322,6 +383,18 @@ body {
   }
 
   .navbar a[href="/listings/new"] {
+    margin-top: 0.6rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tax-toggle {
+    align-self: flex-start;
     margin-top: 0.6rem;
   }
 }
