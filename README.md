@@ -52,6 +52,15 @@ node app.js
 ```bash
 👉 http://localhost:3000
 ```
+---
+
+## 🌐 Live Preview
+
+You can preview the application here:
+
+👉 [Quick Trip Preview](https://quick-trip.onrender.com/)
+
+---
 
 ## 📌 Learning Focus
 
